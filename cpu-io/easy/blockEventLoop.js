@@ -10,7 +10,11 @@
 // 1. Do NOT use `setTimeout` or Promises (those are non-blocking).
 // 2. Use a `while` loop with `Date.now()` or `performance.now()`.
 // 3. This is a teaching tool to show how NOT to write async code.
+const {performance} = require("perf_hooks");
+function blockEventLoop(ms) {
+    const start = performance.now();
+    while(performance.now()-start<ms){}
+}
 
-function blockEventLoop(ms) {}
 
 module.exports = blockEventLoop;
